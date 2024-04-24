@@ -4,6 +4,10 @@ import = [
     "~/.config/alacritty/themes/tokyo-night.toml"
 ]
 
+[shell]
+program = "/bin/zsh"
+args = ["-l", "-c", "tmux attach || tmux"]
+
 [font]
 size = 22.0
 # use_thin_strokes = true
@@ -19,5 +23,5 @@ opacity = 1
 startup_mode = "Maximized"
 
 [window.padding]
-x = 18
-y = 16
+x = 0
+y = 0

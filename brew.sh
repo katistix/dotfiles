@@ -17,7 +17,7 @@ brew upgrade
 brew install git
 brew install wget
 brew install stow
-
+brew install tmux
 
 # Install casks
 brew install --cask alacritty --no-quarantine

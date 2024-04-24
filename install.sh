@@ -6,3 +6,8 @@ source brew.sh
 
 # Set up the symlinks using stow
 source symlinks.sh
+
+# Set up tmux
+source tmux.sh
+
+
