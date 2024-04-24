@@ -19,7 +19,9 @@ brew install wget
 brew install stow
 
 
-
+# Install casks
+brew install --cask alacritty --no-quarantine
+brew install --cask rectangle
 
 # Install fzf
 brew install fzf

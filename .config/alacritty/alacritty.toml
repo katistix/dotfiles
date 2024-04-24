@@ -1,0 +1,23 @@
+live_config_reload = true
+
+import = [
+    "~/.config/alacritty/themes/tokyo-night.toml"
+]
+
+[font]
+size = 22.0
+# use_thin_strokes = true
+
+[font.normal]
+family = "GeistMono Nerd Font Mono"
+style = "Regular"
+
+[window]
+decorations = "buttonless"
+dynamic_padding = false
+opacity = 1
+startup_mode = "Maximized"
+
+[window.padding]
+x = 18
+y = 16
