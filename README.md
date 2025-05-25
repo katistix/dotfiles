@@ -12,6 +12,7 @@ without fancy setups
 - git
 - stow
 - neovim
+- aerospace
 
 ```bash
 # Clone the repository
