@@ -1,0 +1,7 @@
+window-decoration = none
+theme = tokyonight
+macos-titlebar-style = hidden
+macos-non-native-fullscreen = true
+
+
+font-size = 16
