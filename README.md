@@ -8,6 +8,12 @@ without fancy setups
 
 ### requirements - (in the future there will be an install script with zero dependencies)
 
+```bash
+# since MacOS comes with older bash version, we need to install some dependencies
+# in order for the tmux setup to work properly
+brew install bash bc coreutils gawk gh glab gsed jq nowplaying-cli
+```
+
 - brew
 - git
 - stow
@@ -21,5 +27,5 @@ git clone https://github.com/katistix/dotfiles.git ~/dotfiles/
 
 ```bash
 # Load the symlinks using stow
-stow .
+stow dotfiles
 ```

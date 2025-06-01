@@ -5,3 +5,18 @@ macos-non-native-fullscreen = true
 
 
 font-size = 16
+
+font-family = CartographCF Nerd Font 
+font-synthetic-style = true
+
+cursor-style = block
+cursor-style-blink = true
+shell-integration-features = no-cursor
+
+fullscreen = true
+maximize = true
+
+window-padding-x = 0
+window-padding-y = 0
+
+window-padding-balance = true
