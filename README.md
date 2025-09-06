@@ -14,29 +14,33 @@ A simple and clean macOS development setup focused on terminal-based workflows.
 - **Neovim** - LazyVim configuration with minimal fallback
 - **AeroSpace** - Tiling window manager (configured for floating windows by default)
 - **btop** - System monitor with Tokyo Night theme
+- **Typst** - Modern document preparation system
 
 ### Theme
 - Consistent **Tokyo Night** theme across all applications
 
 ## Installation
 
-### Requirements
+### Quick Setup (One-liner)
 ```bash
-# Install dependencies via Homebrew
-brew install git stow neovim ghostty zellij aerospace btop zoxide
+curl -fsSL https://raw.githubusercontent.com/katistix/dotfiles/main/setup.sh | bash -s -- && cd ~/dotfiles && ./setup.sh
 ```
 
-### Setup
+### Manual Setup
 ```bash
 # Clone the repository
 git clone https://github.com/katistix/dotfiles.git ~/dotfiles/
 
-# Navigate to dotfiles directory
-cd ~/dotfiles
-
-# Create symlinks using stow
-stow .
+# Navigate to dotfiles directory and run setup
+cd ~/dotfiles && ./setup.sh
 ```
+
+The setup script will automatically:
+- Install Homebrew (if not already installed)
+- Install all required dependencies including **Typst**
+- Install Oh My Zsh
+- Create symlinks using stow
+- Backup existing configurations
 
 ## Configuration Details
 
