@@ -31,10 +31,6 @@ export PHP_INI_SCAN_DIR="/Users/paultal/.config/herd-lite/bin:$PHP_INI_SCAN_DIR"
 export PATH="$PATH:/Users/paultal/.lmstudio/bin"
 # End of LM Studio CLI section
 
-
-[[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
-. "/Users/paultal/.deno/env"
-
 # opencode
 export PATH=/Users/paultal/.opencode/bin:$PATH
 

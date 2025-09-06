@@ -1,31 +1,61 @@
 # dotfiles
 
-- those are my dotfiles
-- the idea behind this setup is to keep things as simple as possible,
-without fancy setups
+A simple and clean macOS development setup focused on terminal-based workflows.
 
-## installation
+## What's Included
 
-### requirements - (in the future there will be an install script with zero dependencies)
+### Terminal & Shell
+- **Ghostty** - Fast terminal emulator with Tokyo Night theme
+- **Zellij** - Terminal multiplexer with custom keybindings (auto-starts on shell launch)
+- **Zsh** with Oh My Zsh and custom aliases
+- **Zoxide** for smart directory navigation
 
+### Development Tools
+- **Neovim** - LazyVim configuration with minimal fallback
+- **AeroSpace** - Tiling window manager (configured for floating windows by default)
+- **btop** - System monitor with Tokyo Night theme
+
+### Theme
+- Consistent **Tokyo Night** theme across all applications
+
+## Installation
+
+### Requirements
 ```bash
-# since MacOS comes with older bash version, we need to install some dependencies
-# in order for the tmux setup to work properly
-brew install bash bc coreutils gawk gh glab gsed jq nowplaying-cli
+# Install dependencies via Homebrew
+brew install git stow neovim ghostty zellij aerospace btop zoxide
 ```
 
-- brew
-- git
-- stow
-- neovim
-- aerospace
-
+### Setup
 ```bash
 # Clone the repository
 git clone https://github.com/katistix/dotfiles.git ~/dotfiles/
+
+# Navigate to dotfiles directory
+cd ~/dotfiles
+
+# Create symlinks using stow
+stow .
 ```
 
-```bash
-# Load the symlinks using stow
-stow dotfiles
-```
+## Configuration Details
+
+### Neovim
+- Default: LazyVim configuration (`nvim-lazy/`)
+- Alternative: Minimal setup (`nvim-minimal/`)
+- Aliases: `nvim` (LazyVim), `nvimm` (minimal)
+
+### Zellij
+- Auto-starts in terminal sessions (except VSCode)
+- Custom tmux-like keybindings
+- Tokyo Night theme
+
+### AeroSpace
+- Floating windows by default
+- Alt+1-5 for workspace switching
+- Alt+Shift+1-5 for moving windows
+
+### Shell Aliases
+- `npm` → `pnpm`
+- `nvim` → LazyVim configuration
+- `nvimm` → Minimal Neovim setup
