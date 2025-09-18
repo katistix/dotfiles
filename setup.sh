@@ -32,7 +32,7 @@ fi
 
 # Install dependencies
 print_status "Installing dependencies via Homebrew..."
-brew install git stow neovim ghostty zellij aerospace btop zoxide typst
+brew install git stow neovim ghostty zellij btop zoxide typst
 
 # Install Oh My Zsh if not already installed
 if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
