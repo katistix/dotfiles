@@ -1,35 +1,39 @@
-# dotfiles
+# Minimal Dotfiles
 
-A simple and clean macOS development setup focused on terminal-based workflows.
+A simple and intentional macOS development setup focused on essential tools and consistent theming.
 
 ## What's Included
 
-### Terminal & Shell
-- **Ghostty** - Fast terminal emulator with Tokyo Night theme
-- **Zellij** - Terminal multiplexer with custom keybindings (auto-starts on shell launch)
-- **Zsh** with Oh My Zsh and custom aliases
-- **Zoxide** for smart directory navigation
-
-### Development Tools
-- **Neovim** - LazyVim configuration with minimal fallback
-- **AeroSpace** - Tiling window manager (configured for floating windows by default)
+### Essential CLI Tools
+- **Micro** - Simple terminal text editor
 - **btop** - System monitor with Tokyo Night theme
-- **Typst** - Modern document preparation system
+- **Fastfetch** - Beautiful system information display
+- **Zoxide** - Smart directory navigation (`z` command)
+- **Git** - Version control
+- **Go** - Programming language
+- **OpenCode** - AI-powered coding assistant
+
+### Applications
+- **Zen Browser** - Privacy-focused web browser
+- **Visual Studio Code** - Code editor
+- **Alt-Tab** - Improved window switcher for macOS
+- **Raycast** - Productivity and launcher app
+- **Ghostty** - Fast terminal emulator with Tokyo Night theme
 
 ### Theme
-- Consistent **Tokyo Night** theme across all applications
+- Consistent **Tokyo Night** theme across all configured applications
 
 ## Installation
 
 ### Quick Setup (One-liner)
 ```bash
-curl -fsSL https://raw.githubusercontent.com/katistix/dotfiles/main/setup.sh | bash -s -- && cd ~/dotfiles && ./setup.sh
+git clone https://github.com/katistix/dotfiles.git ~/dotfiles && cd ~/dotfiles && ./setup.sh
 ```
 
 ### Manual Setup
 ```bash
 # Clone the repository
-git clone https://github.com/katistix/dotfiles.git ~/dotfiles/
+git clone https://github.com/katistix/dotfiles.git ~/dotfiles
 
 # Navigate to dotfiles directory and run setup
 cd ~/dotfiles && ./setup.sh
@@ -37,29 +41,33 @@ cd ~/dotfiles && ./setup.sh
 
 The setup script will automatically:
 - Install Homebrew (if not already installed)
-- Install all required dependencies including **Typst**
-- Install Oh My Zsh
+- Install all CLI tools via `brew install`
+- Install GUI applications via `brew install --cask`
+- Install Oh My Zsh for improved shell experience
 - Create symlinks using stow
 - Backup existing configurations
 
 ## Configuration Details
 
-### Neovim
-- Default: LazyVim configuration (`nvim-lazy/`)
-- Alternative: Minimal setup (`nvim-minimal/`)
-- Aliases: `nvim` (LazyVim), `nvimm` (minimal)
-
-### Zellij
-- Auto-starts in terminal sessions (except VSCode)
-- Custom tmux-like keybindings
+### Terminal (Ghostty)
 - Tokyo Night theme
-
-### AeroSpace
-- Floating windows by default
-- Alt+1-5 for workspace switching
-- Alt+Shift+1-5 for moving windows
+- CartographCF Nerd Font
+- Optimized for fullscreen use
+- Cursor blinking enabled
 
 ### Shell Aliases
-- `npm` → `pnpm`
-- `nvim` → LazyVim configuration
-- `nvimm` → Minimal Neovim setup
+- `vim` → `micro` (simple text editor)
+- `cat` → `micro -readonly` (read-only file viewing)
+
+### Development
+- Go workspace properly configured
+- OpenCode CLI available in PATH
+- Git integration with Oh My Zsh
+
+## Philosophy
+
+This setup prioritizes:
+- **Simplicity** - Only essential tools, no bloat
+- **Consistency** - Tokyo Night theme everywhere possible
+- **Intentionality** - Each tool serves a specific purpose
+- **Performance** - Fast, lightweight applications
