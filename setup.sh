@@ -26,7 +26,7 @@ fi
 # Install dependencies
 echo "Installing packages..."
 brew install micro btop zoxide git go fastfetch opencode stow &> /dev/null || echo "Some packages may already be installed"
-brew install --cask zen-browser visual-studio-code alt-tab raycast ghostty &> /dev/null || echo "Some apps may already be installed"
+brew install --cask zen-browser visual-studio-code alt-tab raycast ghostty zed&> /dev/null || echo "Some apps may already be installed"
 
 # Install Oh My Zsh if needed
 if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
