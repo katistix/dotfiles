@@ -16,3 +16,7 @@ export PATH=$PATH:$(go env GOPATH)/bin
 
 # OpenCode CLI path
 export PATH=/Users/paultal/.opencode/bin:$PATH
+
+# Neovim aliases
+alias vim="nvim"
+alias vi="nvim"

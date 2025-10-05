@@ -25,7 +25,7 @@ fi
 
 # Install dependencies
 echo "Installing packages..."
-brew install micro btop zoxide git go fastfetch opencode stow &> /dev/null || echo "Some packages may already be installed"
+brew install neovim btop zoxide git go fastfetch opencode stow &> /dev/null || echo "Some packages may already be installed"
 brew install --cask zen-browser visual-studio-code alt-tab raycast ghostty zed&> /dev/null || echo "Some apps may already be installed"
 
 # Install Oh My Zsh if needed
@@ -42,6 +42,7 @@ cd "$DOTFILES_DIR"
 [[ -f "$HOME/.zshrc" && ! -L "$HOME/.zshrc" ]] && mv "$HOME/.zshrc" "$HOME/.zshrc.backup"
 [[ -f "$HOME/.config/btop/btop.conf" && ! -L "$HOME/.config/btop/btop.conf" ]] && mv "$HOME/.config/btop/btop.conf" "$HOME/.config/btop/btop.conf.backup"
 [[ -f "$HOME/.config/ghostty/config" && ! -L "$HOME/.config/ghostty/config" ]] && mv "$HOME/.config/ghostty/config" "$HOME/.config/ghostty/config.backup"
+[[ -d "$HOME/.config/nvim" && ! -L "$HOME/.config/nvim" ]] && mv "$HOME/.config/nvim" "$HOME/.config/nvim.backup"
 
 # Create symlinks
 echo "Creating symlinks..."

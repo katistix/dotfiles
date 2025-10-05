@@ -5,8 +5,8 @@ A simple and intentional macOS development setup focused on essential tools and 
 ## What's Included
 
 ### Essential CLI Tools
-- **Micro** - Simple terminal text editor
-- **btop** - System monitor with Tokyo Night theme
+- **Neovim** - Modern terminal text editor with LSP, autocompletion, and fuzzy finding
+- **btop** - System monitor with Moonfly theme
 - **Fastfetch** - Beautiful system information display
 - **Zoxide** - Smart directory navigation (`z` command)
 - **Git** - Version control
@@ -18,10 +18,10 @@ A simple and intentional macOS development setup focused on essential tools and 
 - **Visual Studio Code** - Code editor
 - **Alt-Tab** - Improved window switcher for macOS
 - **Raycast** - Productivity and launcher app
-- **Ghostty** - Fast terminal emulator with Tokyo Night theme
+- **Ghostty** - Fast terminal emulator with Moonfly theme
 
 ### Theme
-- Consistent **Tokyo Night** theme across all configured applications
+- Consistent **Moonfly** theme across all configured applications
 
 ## Installation
 
@@ -50,24 +50,44 @@ The setup script will automatically:
 ## Configuration Details
 
 ### Terminal (Ghostty)
-- Tokyo Night theme
+- Moonfly theme
 - CartographCF Nerd Font
 - Optimized for fullscreen use
 - Cursor blinking enabled
 
+### Neovim
+- **LSP Support**: Auto-installed language servers for multiple languages
+- **Autocompletion**: Smart completion with nvim-cmp
+- **Fuzzy Finding**: Telescope for files and content search
+- **Syntax Highlighting**: Treesitter with essential parsers
+- **Theme**: Moonfly colorscheme matching terminal
+- **Key Hints**: Which-key for discovering shortcuts
+
+#### Key Bindings
+- `<Space>` - Leader key
+- `<Space>sf` - Find files
+- `<Space>sg` - Search git files (including hidden)
+- `<Space>sl` - Live grep search
+- `<Space><Space>` - Switch buffers
+- `gd` - Go to definition
+- `gr` - Find references
+- `K` - Show documentation
+
 ### Shell Aliases
-- `vim` → `micro` (simple text editor)
-- `cat` → `micro -readonly` (read-only file viewing)
+- `vim` → `nvim` (modern Neovim editor)
+- `vi` → `nvim` (modern Neovim editor)
 
 ### Development
 - Go workspace properly configured
 - OpenCode CLI available in PATH
 - Git integration with Oh My Zsh
+- Mason auto-installs language servers
 
 ## Philosophy
 
 This setup prioritizes:
 - **Simplicity** - Only essential tools, no bloat
-- **Consistency** - Tokyo Night theme everywhere possible
+- **Consistency** - Moonfly theme everywhere possible
 - **Intentionality** - Each tool serves a specific purpose
 - **Performance** - Fast, lightweight applications
+- **Modern Development** - LSP, autocompletion, and fuzzy finding built-in
