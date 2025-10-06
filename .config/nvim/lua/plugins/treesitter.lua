@@ -5,6 +5,10 @@ return {
     ensure_installed = { 
       "bash", 
       "c", 
+      "cpp",
+      "make",
+      "cmake",
+      "asm",
       "html", 
       "lua", 
       "luadoc", 

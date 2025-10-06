@@ -1,5 +1,6 @@
 # window-decoration = none
-theme = tokyonight
+# theme = tokyonight
+theme = Moonfly
 # macos-titlebar-style = hidden
 # macos-non-native-fullscreen = true
 
@@ -13,7 +14,7 @@ cursor-style = block
 cursor-style-blink = true
 shell-integration-features = no-cursor
 
-fullscreen = true
+# fullscreen = true
 # maximize = true
 
 window-padding-x = 0

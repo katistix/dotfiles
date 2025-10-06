@@ -1,0 +1,37 @@
+# AeroSpace configuration - mostly native window management
+# Terminal and zathura automatically go to workspace 2
+
+# Global settings
+automatically-unhide-macos-hidden-apps = false
+
+# Start on workspace 1 by default
+after-startup-command = ['workspace 1']
+
+# Key bindings - workspace switching only
+[mode.main.binding]
+# Switch between workspaces
+alt-1 = 'workspace 1'
+alt-2 = 'workspace 2'
+alt-3 = 'workspace 3'
+alt-4 = 'workspace 4'
+
+# Move current window to workspace
+alt-shift-1 = 'move-node-to-workspace 1'
+alt-shift-2 = 'move-node-to-workspace 2'
+alt-shift-3 = 'move-node-to-workspace 3'
+alt-shift-4 = 'move-node-to-workspace 4'
+
+# Application-specific rules - automatically move to workspace 2
+[[on-window-detected]]
+if.app-id = 'com.mitchellh.ghostty'
+run = 'move-node-to-workspace 2'
+
+[[on-window-detected]]
+if.app-id = 'org.pwmt.zathura'
+run = 'move-node-to-workspace 2'
+
+# Catch-all rule: move any window that appears on workspace 2 to workspace 1
+# This will run after the specific rules above, so ghostty and zathura stay on ws2
+[[on-window-detected]]
+if.workspace = '2'
+run = 'move-node-to-workspace 1'

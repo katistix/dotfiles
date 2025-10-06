@@ -36,6 +36,24 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end,
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "c", "cpp" },
+  group = vim.api.nvim_create_augroup("c-settings", { clear = true }),
+  callback = function()
+    vim.opt_local.tabstop = 4
+    vim.opt_local.shiftwidth = 4
+    vim.opt_local.expandtab = true
+    vim.opt_local.cindent = true
+    vim.opt_local.cinoptions = ":0,l1,t0,g0,(0"
+    vim.opt_local.colorcolumn = "80"
+    
+    vim.keymap.set("n", "<leader>h", "<cmd>ClangdSwitchSourceHeader<CR>", 
+      { buffer = true, desc = "Switch between source and header" })
+    vim.keymap.set("n", "<leader>t", "<cmd>ClangdTypeHierarchy<CR>", 
+      { buffer = true, desc = "Show type hierarchy" })
+  end,
+})
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   local lazyrepo = "https://github.com/folke/lazy.nvim.git"
