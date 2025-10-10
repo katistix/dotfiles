@@ -20,3 +20,7 @@ export PATH=/Users/paultal/.opencode/bin:$PATH
 # Neovim aliases
 alias vim="nvim"
 alias vi="nvim"
+
+
+# Kitty images
+alias icat="kitten icat"

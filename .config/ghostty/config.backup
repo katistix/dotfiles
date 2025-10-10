@@ -4,6 +4,9 @@ theme = Moonfly
 # macos-titlebar-style = hidden
 # macos-non-native-fullscreen = true
 
+# Use integrated tabs instead of native macOS tabs for tiling window managers
+macos-titlebar-style = tabs
+
 
 font-size = 16
 

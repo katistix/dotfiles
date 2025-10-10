@@ -29,3 +29,9 @@ run = 'move-node-to-workspace 2'
 [[on-window-detected]]
 if.app-id = 'org.pwmt.zathura'
 run = 'move-node-to-workspace 2'
+
+# Catch-all rule: move any window that appears on workspace 2 to workspace 1
+# This will run after the specific rules above, so kitty and zathura stay on ws2
+[[on-window-detected]]
+if.workspace = '2'
+run = 'move-node-to-workspace 1'

@@ -1,0 +1,58 @@
+# Zathura configuration - Moonfly theme
+
+# Moonfly colors
+set default-bg "#080808"
+set default-fg "#bdbdbd"
+
+set statusbar-bg "#323437"
+set statusbar-fg "#bdbdbd"
+
+set inputbar-bg "#323437"
+set inputbar-fg "#bdbdbd"
+
+set notification-bg "#323437"
+set notification-fg "#bdbdbd"
+
+set notification-error-bg "#ff5454"
+set notification-error-fg "#080808"
+
+set notification-warning-bg "#e3c78a"
+set notification-warning-fg "#080808"
+
+set highlight-color "#80a0ff"
+set highlight-active-color "#cf87e8"
+
+set completion-bg "#323437"
+set completion-fg "#bdbdbd"
+set completion-group-bg "#080808"
+set completion-group-fg "#80a0ff"
+set completion-highlight-bg "#cf87e8"
+set completion-highlight-fg "#080808"
+
+set index-bg "#080808"
+set index-fg "#bdbdbd"
+set index-active-bg "#cf87e8"
+set index-active-fg "#080808"
+
+set render-loading-bg "#080808"
+set render-loading-fg "#bdbdbd"
+
+# Recolor documents to match moonfly theme
+set recolor true
+set recolor-lightcolor "#080808"
+set recolor-darkcolor "#bdbdbd"
+set recolor-reverse-video true
+set recolor-keephue true
+
+# Additional settings
+set adjust-open "best-fit"
+set pages-per-row 1
+set scroll-page-aware true
+set scroll-full-overlap 0.01
+set scroll-step 50
+set zoom-min 10
+set guioptions ""
+
+# Key bindings for easier zoom
+map = zoom in
+map - zoom out
