@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# get the most recent file
+latest_file=$(ls -t ~/Downloads | head -n 1)
+
+# extract filename and extension
+filename="${latest_file%.*}"
+extension="${latest_file##*.}"
+
+# prompt for new filename (without extension)
+read -p "Enter filename (default: $filename): " new_filename
+
+# use original filename if nothing provided
+if [ -z "$new_filename" ]; then
+    new_filename="$filename"
+fi
+
+# add extension back
+final_filename="$new_filename.$extension"
+
+# copy that file to the current working dir with the chosen name
+cp "$HOME/Downloads/$latest_file" "$final_filename"
+
+echo "Copied $latest_file to $(pwd)/$final_filename"
