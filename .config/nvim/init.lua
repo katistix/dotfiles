@@ -161,7 +161,7 @@ require("lazy").setup({
 
       -- Simple telescope keybindings
       local builtin = require("telescope.builtin")
-      vim.keymap.set("n", "<leader>ff", function() builtin.find_files({hidden=true}) end, { desc = "Find files" })
+      vim.keymap.set("n", "<leader>ff", function() builtin.find_files({hidden=true, file_ignore_patterns={".git/"}}) end, { desc = "Find files" })
       vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Live grep" })
       vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Find buffers" })
       vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Help tags" })
@@ -418,6 +418,71 @@ require("lazy").setup({
     end,
   },
 })
+
+-- ============================================================================
+-- DIAGNOSTICS BOX TOGGLE
+-- Simple diagnostics display with toggle functionality
+-- ============================================================================
+
+local diagnostics_win = nil
+local diagnostics_buf = nil
+
+local function toggle_diagnostics_box()
+  if diagnostics_win and vim.api.nvim_win_is_valid(diagnostics_win) then
+    vim.api.nvim_win_close(diagnostics_win, true)
+    diagnostics_win = nil
+    diagnostics_buf = nil
+  else
+    local diagnostics = vim.diagnostic.get()
+    
+    if #diagnostics == 0 then
+      vim.notify("No diagnostics found", vim.log.levels.INFO)
+      return
+    end
+
+    local lines = {}
+    local highlights = {}
+    
+    for _, diag in ipairs(diagnostics) do
+      local severity = vim.diagnostic.severity[diag.severity]
+      local icon = severity == "ERROR" and "✗" or severity == "WARN" and "⚠" or severity == "INFO" and "ℹ" or "󰌶"
+      local line = string.format("%s %s:%d:%d - %s", icon, vim.fn.fnamemodify(vim.api.nvim_buf_get_name(diag.bufnr), ":t"), diag.lnum + 1, diag.col + 1, diag.message)
+      table.insert(lines, line)
+      
+      local hl_group = "DiagnosticSign" .. severity:sub(1,1) .. severity:sub(2):lower()
+      table.insert(highlights, { line_nr = #lines - 1, hl_group = hl_group })
+    end
+    
+    diagnostics_buf = vim.api.nvim_create_buf(false, true)
+    vim.api.nvim_buf_set_lines(diagnostics_buf, 0, -1, false, lines)
+    vim.api.nvim_buf_set_option(diagnostics_buf, "modifiable", false)
+    vim.api.nvim_buf_set_option(diagnostics_buf, "buftype", "nofile")
+    
+    local width = math.min(vim.o.columns - 4, 80)
+    local height = math.min(#lines, 15)
+    
+    diagnostics_win = vim.api.nvim_open_win(diagnostics_buf, false, {
+      relative = "editor",
+      width = width,
+      height = height,
+      row = 2,
+      col = 2,
+      style = "minimal",
+      border = "rounded",
+      title = " Diagnostics ",
+      title_pos = "center"
+    })
+    
+    for _, hl in ipairs(highlights) do
+      vim.api.nvim_buf_add_highlight(diagnostics_buf, -1, hl.hl_group, hl.line_nr, 0, -1)
+    end
+    
+    vim.api.nvim_buf_set_keymap(diagnostics_buf, "n", "q", ":lua vim.api.nvim_win_close(" .. diagnostics_win .. ", true); diagnostics_win = nil; diagnostics_buf = nil<CR>", { noremap = true, silent = true })
+    vim.api.nvim_buf_set_keymap(diagnostics_buf, "n", "<Esc>", ":lua vim.api.nvim_win_close(" .. diagnostics_win .. ", true); diagnostics_win = nil; diagnostics_buf = nil<CR>", { noremap = true, silent = true })
+  end
+end
+
+vim.keymap.set("n", "<leader>d", toggle_diagnostics_box, { desc = "Toggle diagnostics box" })
 
 -- ============================================================================
 -- DEFAULT LSP KEYBINDINGS

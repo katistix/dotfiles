@@ -25,7 +25,7 @@ fi
 
 # Install dependencies
 echo "Installing packages..."
-brew install neovim btop zoxide git go fastfetch opencode stow || echo "Some packages may already be installed"
+brew install neovim btop zoxide git go fastfetch opencode stow fzf || echo "Some packages may already be installed"
 echo "Installing cask applications..."
 brew install --cask zen-browser visual-studio-code alt-tab raycast ghostty kitty nikitabobko/tap/aerospace || echo "Some apps may already be installed"
 
