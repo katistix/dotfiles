@@ -31,4 +31,4 @@ alias icat="kitten icat"
 # Dotfiles navigation
 alias df="cd ~/dotfiles"
 
-
+alias pdf="zathura"
