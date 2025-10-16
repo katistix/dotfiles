@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -e
+
+# Find and select a *.book.pdf file from uni folder, display relative path without extension
+selected_book=$(find ~/data/school/uni -type f -name "*.book.pdf" -not -path "*/.git/*" | sed 's|.*/data/school/uni/||' | sed 's|\.book\.pdf$||' | fzf --prompt="Select book: " --height=40% --reverse)
+
+if [[ -n $selected_book ]]; then
+    # Open the selected book in zathura
+    zathura ~/data/school/uni/"$selected_book".book.pdf &
+fi
