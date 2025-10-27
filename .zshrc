@@ -32,3 +32,8 @@ alias icat="kitten icat"
 alias df="cd ~/dotfiles"
 
 alias pdf="zathura"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/paultal/.lmstudio/bin"
+# End of LM Studio CLI section
+

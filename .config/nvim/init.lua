@@ -43,7 +43,7 @@ vim.opt.expandtab = true        -- Use spaces instead of tabs
 vim.opt.undofile = true         -- Persistent undo
 
 -- Interface
-vim.opt.showmode = true       
+vim.opt.showmode = false        -- Hide mode in command line (shown in statusline)       
 vim.opt.splitright = true       -- Vertical splits go to the right
 vim.opt.splitbelow = true       -- Horizontal splits go below
 vim.opt.list = true             -- Show invisible characters
@@ -92,7 +92,7 @@ vim.api.nvim_create_autocmd("FileType", {
 -- ============================================================================
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
+if not vim.uv.fs_stat(lazypath) then
   local lazyrepo = "https://github.com/folke/lazy.nvim.git"
   vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
 end
@@ -367,8 +367,11 @@ require("lazy").setup({
       -- Get completion capabilities from nvim-cmp
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
       
-      -- Configure Go language server (gopls)
+      -- Configure Go language server (gopls) using new vim.lsp.config API
       vim.lsp.config.gopls = {
+        cmd = { 'gopls' },
+        filetypes = { 'go', 'gomod', 'gowork', 'gotmpl' },
+        root_markers = { 'go.mod', '.git' },
         capabilities = capabilities,
         settings = {
           gopls = {
@@ -382,8 +385,11 @@ require("lazy").setup({
         },
       }
 
-      -- Configure Lua language server
+      -- Configure Lua language server using new vim.lsp.config API
       vim.lsp.config.lua_ls = {
+        cmd = { 'lua-language-server' },
+        filetypes = { 'lua' },
+        root_markers = { '.luarc.json', '.luarc.jsonc', '.luacheckrc', '.stylua.toml', 'stylua.toml', 'selene.toml', 'selene.yml', '.git' },
         capabilities = capabilities,
         settings = {
           Lua = {
@@ -394,6 +400,9 @@ require("lazy").setup({
         },
       }
 
+      -- Enable the configured language servers
+      vim.lsp.enable({ 'gopls', 'lua_ls' })
+
       -- Auto-format and organize imports on save for Go files
       vim.api.nvim_create_autocmd("BufWritePre", {
         pattern = "*.go",
@@ -402,7 +411,7 @@ require("lazy").setup({
           vim.lsp.buf.format()
           
           -- Organize imports
-          local params = vim.lsp.util.make_range_params()
+          local params = vim.lsp.util.make_range_params(nil, "utf-16")
           params.context = {only = {"source.organizeImports"}}
           local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params)
           for cid, res in pairs(result or {}) do
@@ -455,8 +464,8 @@ local function toggle_diagnostics_box()
     
     diagnostics_buf = vim.api.nvim_create_buf(false, true)
     vim.api.nvim_buf_set_lines(diagnostics_buf, 0, -1, false, lines)
-    vim.api.nvim_buf_set_option(diagnostics_buf, "modifiable", false)
-    vim.api.nvim_buf_set_option(diagnostics_buf, "buftype", "nofile")
+    vim.bo[diagnostics_buf].modifiable = false
+    vim.bo[diagnostics_buf].buftype = "nofile"
     
     local width = math.min(vim.o.columns - 4, 80)
     local height = math.min(#lines, 15)
