@@ -25,7 +25,7 @@ fi
 
 # Install dependencies
 echo "Installing packages..."
-brew install neovim btop zoxide git go fastfetch opencode stow fzf || echo "Some packages may already be installed"
+brew install btop zoxide git go fastfetch opencode stow fzf || echo "Some packages may already be installed"
 echo "Installing cask applications..."
 brew install --cask zen-browser visual-studio-code alt-tab raycast ghostty kitty nikitabobko/tap/aerospace || echo "Some apps may already be installed"
 
@@ -43,14 +43,6 @@ fi
 # Navigate to dotfiles directory
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$DOTFILES_DIR"
-
-# Backup existing configs
-[[ -f "$HOME/.zshrc" && ! -L "$HOME/.zshrc" ]] && mv "$HOME/.zshrc" "$HOME/.zshrc.backup"
-[[ -f "$HOME/.config/btop/btop.conf" && ! -L "$HOME/.config/btop/btop.conf" ]] && mv "$HOME/.config/btop/btop.conf" "$HOME/.config/btop/btop.conf.backup"
-[[ -f "$HOME/.config/ghostty/config" && ! -L "$HOME/.config/ghostty/config" ]] && mv "$HOME/.config/ghostty/config" "$HOME/.config/ghostty/config.backup"
-[[ -f "$HOME/.config/kitty/kitty.conf" && ! -L "$HOME/.config/kitty/kitty.conf" ]] && mv "$HOME/.config/kitty/kitty.conf" "$HOME/.config/kitty/kitty.conf.backup"
-[[ -d "$HOME/.config/nvim" && ! -L "$HOME/.config/nvim" ]] && mv "$HOME/.config/nvim" "$HOME/.config/nvim.backup"
-[[ -f "$HOME/.config/aerospace/aerospace.toml" && ! -L "$HOME/.config/aerospace/aerospace.toml" ]] && mv "$HOME/.config/aerospace/aerospace.toml" "$HOME/.config/aerospace/aerospace.toml.backup"
 
 # Create symlinks
 echo "Creating symlinks..."

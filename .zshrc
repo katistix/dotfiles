@@ -14,16 +14,13 @@ eval "$(zoxide init zsh)"
 # Go binary path
 export PATH=$PATH:$(go env GOPATH)/bin
 
+export PATH="$PATH:$HOME/.pub-cache/bin"
+
 # OpenCode CLI path
-export PATH=/Users/paultal/.opencode/bin:$PATH
+export PATH="$HOME/.opencode/bin:$PATH"
 
 # Dotfiles scripts
 export PATH="$HOME/dotfiles/scripts:$PATH"
-
-# Neovim aliases
-alias vim="nvim"
-alias vi="nvim"
-
 
 # Kitty images
 alias icat="kitten icat"
@@ -37,3 +34,21 @@ alias pdf="zathura"
 export PATH="$PATH:/Users/paultal/.lmstudio/bin"
 # End of LM Studio CLI section
 
+# Added by Antigravity
+export PATH="/Users/paultal/.antigravity/antigravity/bin:$PATH"
+
+# >>> juliaup initialize >>>
+
+# !! Contents within this block are managed by juliaup !!
+
+path=('/Users/paultal/.juliaup/bin' $path)
+export PATH
+
+# <<< juliaup initialize <<<
+
+# bun completions
+[ -s "/Users/paultal/.bun/_bun" ] && source "/Users/paultal/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
