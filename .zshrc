@@ -34,18 +34,6 @@ alias pdf="zathura"
 export PATH="$PATH:/Users/paultal/.lmstudio/bin"
 # End of LM Studio CLI section
 
-# Added by Antigravity
-export PATH="/Users/paultal/.antigravity/antigravity/bin:$PATH"
-
-# >>> juliaup initialize >>>
-
-# !! Contents within this block are managed by juliaup !!
-
-path=('/Users/paultal/.juliaup/bin' $path)
-export PATH
-
-# <<< juliaup initialize <<<
-
 # bun completions
 [ -s "/Users/paultal/.bun/_bun" ] && source "/Users/paultal/.bun/_bun"
 
@@ -53,6 +41,7 @@ export PATH
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
+# nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

@@ -25,9 +25,9 @@ fi
 
 # Install dependencies
 echo "Installing packages..."
-brew install btop zoxide git go fastfetch opencode stow fzf || echo "Some packages may already be installed"
+brew install btop zoxide git go fastfetch opencode stow fzf docker || echo "Some packages may already be installed"
 echo "Installing cask applications..."
-brew install --cask zen-browser visual-studio-code alt-tab raycast ghostty kitty nikitabobko/tap/aerospace || echo "Some apps may already be installed"
+brew install --cask zen-browser visual-studio-code alt-tab raycast kitty discord figma lm-studio || echo "Some apps may already be installed"
 
 # Install zathura from the correct tap
 echo "Installing zathura..."
