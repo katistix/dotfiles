@@ -22,10 +22,9 @@ if ! command -v brew &> /dev/null; then
         eval "$(/usr/local/bin/brew shellenv)"
     fi
 fi
-
 # Install dependencies
 echo "Installing packages..."
-brew install btop zoxide git go fastfetch opencode stow fzf docker || echo "Some packages may already be installed"
+brew install btop zoxide git go fastfetch opencode stow fzf docker oven-sh/bun/bun || echo "Some packages may already be installed"
 echo "Installing cask applications..."
 brew install --cask zen-browser visual-studio-code alt-tab raycast kitty discord figma lm-studio || echo "Some apps may already be installed"
 
