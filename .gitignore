@@ -2,3 +2,5 @@
 .config/gh
 .config/github-copilot
 .config/opencode
+.config/stripe
+.DS_Store
