@@ -1,0 +1,100 @@
+# AeroSpace — simple tiling window manager config
+# Docs: https://nikitabobko.github.io/AeroSpace/guide
+# Reload after edits with: aerospace reload-config  (or alt-shift-; then esc)
+
+config-version = 2
+
+# Start AeroSpace when you log in
+start-at-login = true
+
+# Pick up edits to this file automatically
+auto-reload-config = true
+
+# Keep layouts predictable (recommended)
+enable-normalization-flatten-containers = true
+enable-normalization-opposite-orientation-for-nested-containers = true
+
+# New windows tile by default
+default-root-container-layout = 'tiles'
+default-root-container-orientation = 'auto'
+
+# Small gaps around and between windows
+gaps.inner.horizontal = 8
+gaps.inner.vertical = 8
+gaps.outer.left = 8
+gaps.outer.bottom = 8
+gaps.outer.top = 8
+gaps.outer.right = 8
+
+# Workspaces 1–5 always exist, even when empty
+persistent-workspaces = ['1', '2', '3', '4', '5']
+
+# Windows App (Microsoft Remote Desktop) needs Option+Tab to reach the remote
+# session (Alt-Tab inside Windows). While a Windows App window is focused, switch
+# to the 'windows-app' binding mode, which has no keybindings at all — so AeroSpace
+# stops swallowing Option combos and they pass through to the remote desktop.
+# Focusing any other app switches back to 'main'.
+on-focus-changed = [
+    'test %{app-bundle-id} = com.microsoft.rdc.macos && mode windows-app || mode main',
+]
+
+# Finder windows always float instead of being tiled
+on-window-detected = [
+    { if = 'test %{app-bundle-id} = com.apple.finder', run = 'layout floating' },
+]
+
+[mode.main.binding]
+
+    # ---- Focus: Option + h/j/k/l ----
+    alt-h = 'focus left'
+    alt-j = 'focus down'
+    alt-k = 'focus up'
+    alt-l = 'focus right'
+
+    # ---- Move window: Option + Shift + h/j/k/l ----
+    alt-shift-h = 'move left'
+    alt-shift-j = 'move down'
+    alt-shift-k = 'move up'
+    alt-shift-l = 'move right'
+
+    # ---- Resize: Option + - / = ----
+    alt-minus = 'resize smart -50'
+    alt-equal = 'resize smart +50'
+
+    # ---- Workspaces: Option + 1..5 ----
+    alt-1 = 'workspace 1'
+    alt-2 = 'workspace 2'
+    alt-3 = 'workspace 3'
+    alt-4 = 'workspace 4'
+    alt-5 = 'workspace 5'
+
+    # ---- Send window to workspace: Option + Shift + 1..5 ----
+    alt-shift-1 = 'move-node-to-workspace 1'
+    alt-shift-2 = 'move-node-to-workspace 2'
+    alt-shift-3 = 'move-node-to-workspace 3'
+    alt-shift-4 = 'move-node-to-workspace 4'
+    alt-shift-5 = 'move-node-to-workspace 5'
+
+    # Jump back to the previous workspace
+    alt-tab = 'workspace-back-and-forth'
+
+    # ---- Layouts ----
+    alt-slash = 'layout tiles horizontal vertical'   # side-by-side tiling
+    alt-comma = 'layout accordion horizontal vertical' # stacked / tabbed
+    alt-r = 'flatten-workspace-tree'                 # reset layout
+    alt-f = 'layout floating tiling'                 # toggle floating window
+    alt-shift-space = 'fullscreen'                   # fill the screen
+
+    # ---- Service mode: Option + Shift + ; ----
+    alt-shift-semicolon = 'mode service'
+
+# "Disabled" mode for Windows App: deliberately no bindings, so every Option-*
+# shortcut (Option+Tab above all) is left to the app / remote session.
+[mode.windows-app.binding]
+
+# Extra commands while in service mode; Esc returns to normal
+[mode.service.binding]
+    esc = ['reload-config', 'mode main']
+    r = ['flatten-workspace-tree', 'mode main']
+    f = ['layout floating tiling', 'mode main']
+    backspace = ['close-all-windows-but-current', 'mode main']

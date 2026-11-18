@@ -80,6 +80,11 @@ export EDITOR="nvim"
 
 alias npm="pnpm"
 alias fm="nnn -e"
+alias tt="termitype"
+alias icat="kitten icat"
+
+# Secondary Neovim config tuned for Python
+alias pynvim='NVIM_APPNAME=nvim-python nvim'
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -139,3 +144,4 @@ esac
 # .NET 10 SDK (macOS arm64 pkg install)
 export DOTNET_ROOT="/usr/local/share/dotnet"
 export PATH="$HOME/.dotnet/tools:/usr/local/share/dotnet:$PATH"
+export GITHUB_TOKEN="$(gh auth token 2>/dev/null)"
